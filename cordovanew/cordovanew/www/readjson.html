@@ -1,0 +1,37 @@
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="css/ionic.css">
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function() {
+        var url = "https://mbahesopo.000webhostapp.com/cordovanew/cordovanew/www/json.php";
+        $.getJSON(url, function(result) {
+            console.log(result);
+            $.each(result, function(i, field) {
+                var Id = field.Id;
+                var nama_pembeli=field.nama_pembeli;
+                var nama_barang=field.nama_barang;
+                var unit=field.unit;
+                var harga=field.harga;
+               var jumlah=field.jumlah;
+                
+                $("#listview").append("<a class='item' href='form.html?Id=" + Id + "&nama_pembeli=" + nama_pembeli + "&nama_barang=" + nama_barang + "&unit=" + unit + "&harga=" + harga +"&jumlah=" + jumlah+ "'><h2>" + nama_pembeli + " </h2><h2>" + nama_barang + " </h2><h2>" + unit + " </h2><h2>" + harga + "</h2><h2>" + jumlah + "</a>");
+            });
+        });
+    });
+    </script>
+</head>
+
+<body>
+    <div class="bar bar-header bar-positive" style="margin-bottom:80px;">
+        <a href="index.html" class="button button-clear">Home</a>
+        <h1 class="title">Read Database (JSON)</h1>
+    </div>
+    <br/>
+    <br/>
+    <ul class="list" id="listview">
+    </ul>
+</body>
+
+</html>
